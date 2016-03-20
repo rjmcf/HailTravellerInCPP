@@ -27,7 +27,7 @@ main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 	
 googleTest: $(TEST)
-	$(CC) -o $@ $^ $(CFLAGS) 
+	$(CC) -o $@ $^ $(CFLAGS) $(GOOGLELDFLAGS)
 	
 .PHONY : runtest
 runtest : googleTest
