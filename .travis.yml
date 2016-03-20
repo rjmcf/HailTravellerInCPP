@@ -10,3 +10,5 @@ install:
  - sudo cmake .
  - sudo make
  - sudo mv libg* /usr/lib
+
+script:
