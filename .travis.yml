@@ -1,0 +1,12 @@
+language: cpp
+compiler: gcc
+
+before-install:
+  - sudo apt-get -qq update
+  - sudo apt-get install libgtest-dev
+
+install:
+ - cd /usr/src/gtest
+ - sudo cmake .
+ - sudo make
+ - sudo mv libg* /usr/lib
