@@ -34,5 +34,5 @@ runtest : test
 	./$<
 	
 clean:
-	rm $(ODIR)/*
-	rm $(TODIR)/*
+	rm -f $(ODIR)/*.o
+	rm -f $(TODIR)/*.o
