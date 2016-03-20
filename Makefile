@@ -30,7 +30,7 @@ test: $(TEST)
 	$(CC) -o $@ $^ $(CFLAGS) $(GOOGLELDFLAGS)
 	
 .PHONY : runtest
-runtest : test
+runtest : 
 	./$< --gtest_output="xml:TestResults.xml"
 	
 clean:
