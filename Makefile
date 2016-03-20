@@ -17,7 +17,7 @@ $(ODIR)/%.o: $(SDIR)/%.cpp
 
 # Add test object file names here
 _TEST = example_test.o
-TEST = $(patsubst %,$(TDIR)/%,$(_TEST))
+TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
 
 $(TODIR)/%.o: $(TSDIR)/%.cpp 
 	$(CC) -c -o $@ $< $(CFLAGS)
