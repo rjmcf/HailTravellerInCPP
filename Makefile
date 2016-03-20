@@ -4,7 +4,7 @@ SDIR=src/impl
 ODIR=src/obj
 TSDIR=test/impl
 TODIR=test/obj
-CFLAGS=-I$(IDIR)
+CFLAGS=-I $(IDIR)
 
 GOOGLELDFLAGS=-lgtest -lgtest_main
 
