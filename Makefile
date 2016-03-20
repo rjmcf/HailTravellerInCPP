@@ -26,12 +26,12 @@ $(TODIR)/%.o: $(TSDIR)/%.cpp
 main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 	
-test: $(TEST)
-	$(CC) -o $@ $^ $(CFLAGS) $(GOOGLELDFLAGS)
+googleTest: $(TEST)
+	$(CC) -o $@ $^ $(CFLAGS) 
 	
 .PHONY : runtest
-runtest : 
-	./test --gtest_output="xml:TestResults.xml"
+runtest : googleTest
+	./googleTest --gtest_output="xml:TestResults.xml"
 	
 clean:
 	rm -f $(ODIR)/*.o

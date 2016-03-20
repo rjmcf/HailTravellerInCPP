@@ -17,6 +17,4 @@ before_install:
 
  
 script:
-  - make test
-  - chmod +x test
   - make runtest
