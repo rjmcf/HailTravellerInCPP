@@ -1,5 +1,5 @@
 #include <iostream>
-#include "src/header/add.h"
+#include "add.h"
 
 int add(int a, int b)
 {
