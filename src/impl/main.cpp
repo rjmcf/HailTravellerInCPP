@@ -1,9 +1,7 @@
 #include <iostream>
+#include "src/header/add.h"
 
-using namespace std;
-
-int main()
+int add(int a, int b)
 {
-    cout << "Hello world!" << endl;
-    return 0;
+	return a + b;
 }

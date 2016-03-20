@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "src/header/add.h"
 
 class MyTest : public ::testing::Test 
 {
@@ -18,6 +19,5 @@ class MyTest : public ::testing::Test
 
 TEST_F(MyTest, mytest1)
 {
-  int result = 1;
-  ASSERT_EQ(1, result);
+  ASSERT_EQ(add(2,3), 5);
 }
