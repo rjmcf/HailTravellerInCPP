@@ -31,7 +31,7 @@ test: $(TEST)
 	
 .PHONY : runtest
 runtest : 
-	./$< --gtest_output="xml:TestResults.xml"
+	./test --gtest_output="xml:TestResults.xml"
 	
 clean:
 	rm -f $(ODIR)/*.o
