@@ -18,5 +18,5 @@ before_install:
 
 script:
   - pwd
-  - ls test/obj
+  - ls test
   - make runtest
