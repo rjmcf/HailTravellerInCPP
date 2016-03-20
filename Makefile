@@ -26,7 +26,7 @@ $(TODIR)/%.o: $(TSDIR)/%.cpp
 main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 	
-googleTest: $(TEST)
+googleTest: $(OBJ) $(TEST)
 	$(CC) -o $@ $^ $(CFLAGS) $(GOOGLELDFLAGS)
 	
 .PHONY : runtest
