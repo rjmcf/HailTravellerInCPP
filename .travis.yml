@@ -7,8 +7,8 @@ before_install:
 
 install:
  - cd /usr/src/gtest
- - cmake .
- - make
- - mv libg* /usr/lib
+ - sudo  cmake .
+ - sudo make
+ - sudo mv libg* /usr/lib
 
 script: make googletest
