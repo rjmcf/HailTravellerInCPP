@@ -17,4 +17,6 @@ before_install:
 
  
 script:
+  - mkdir test/obj
+  - mkdir src/obj
   - make runtest
