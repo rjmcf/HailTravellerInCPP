@@ -1,9 +1,9 @@
 language: cpp
 
-before_script:
+
+script: 
   - mkdir gtestfiles
   - mkdir src/obj
   - mkdir test/obj
   - make
-
-script: ./addtest --gtest_output="xml:TestResults.xml"
+  - ./addtest --gtest_output="xml:TestResults.xml"
