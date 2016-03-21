@@ -1,5 +1,10 @@
 language: cpp
 
-before_script: make
+before_script: 
+ - mkdir gtestfiles
+ - mkdir src/obj
+ - mkdir test/obj 
+ - make debug
+ - make
 
 script: ./addtest 
