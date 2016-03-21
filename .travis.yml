@@ -1,5 +1,7 @@
 language: cpp
 
-before_script: make
+before_script:
+  - ls 
+  - make
 
 script: ./addtest --gtest_output="xml:TestResults.xml"
