@@ -1,4 +1,5 @@
 language: cpp
 
+before_script: chmod -x addtest
 
 script: ./addtest 
