@@ -1,6 +1,7 @@
 language: cpp
 
-before_script: 
+before_script:
+ - ls 
  - mkdir gtestfiles
  - mkdir src/obj
  - mkdir test/obj 
