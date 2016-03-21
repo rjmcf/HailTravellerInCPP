@@ -88,5 +88,5 @@ TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
 $(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 
-addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest_main.a
+addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
