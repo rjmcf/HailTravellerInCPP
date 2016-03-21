@@ -90,3 +90,7 @@ $(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
 
 addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+	
+.PHONY : run_tests
+run_tests : addtest
+	./addtest

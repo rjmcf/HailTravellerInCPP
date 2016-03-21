@@ -5,6 +5,5 @@ before_script:
  - mkdir gtestfiles
  - mkdir src/obj
  - mkdir test/obj 
- - make addtest
 
-script: ./addtest 
+script: make run_tests 
