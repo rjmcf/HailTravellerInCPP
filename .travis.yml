@@ -2,4 +2,4 @@ language: cpp
 
 before_script: make
 
-script: ./addtest
+script: ./addtest --gtest_output="xml:TestResults.xml"
