@@ -22,6 +22,7 @@ SDIR=src/impl
 ODIR=src/obj
 TSDIR=test/impl
 TODIR=test/obj
+GTDUMP=gtestfiles
 
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
@@ -45,7 +46,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS)
 
 clean :
-	rm -f $(TESTS) gtest.a gtest_main.a *.o
+	rm -f $(TESTS) $(GTDUMP)/* $(ODIR)/* $(TODIR)/*
 
 # Builds gtest.a and gtest_main.a.
 
@@ -57,29 +58,35 @@ GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 # implementation details, the dependencies specified below are
 # conservative and not optimized.  This is fine as Google Test
 # compiles fast and for ordinary users its source rarely changes.
-gtest-all.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest-all.cc
+$(GTDUMP)/gtest-all.o : $(GTEST_DIR)/src/gtest-all.cc $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c -o $@ $<            
 
-gtest_main.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest_main.cc
+$(GTDUMP)/gtest_main.o : $(GTEST_DIR)/src/gtest_main.cc $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c -o $@ $<             
 
-gtest.a : gtest-all.o
+$(GTDUMP)/gtest.a : $(GTDUMP)/gtest-all.o
 	$(AR) $(ARFLAGS) $@ $^
 
-gtest_main.a : gtest-all.o gtest_main.o
+$(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
 # Builds a sample test.  A test should link with either gtest.a or
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-main.o : $(SDIR)/main.cpp $(IDIR)/add.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(SDIR)/main.cpp -I$(IDIR)
+# Add object file names here
+_OBJ = main.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-addtest.o : $(TSDIR)/addtest.cpp $(IDIR)/add.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(TSDIR)/addtest.cpp -I$(IDIR)
+$(ODIR)/%.o : $(SDIR)/%.cpp $(IDIR)/add.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
+	
+# Add test object file names here
+_TEST = addtest.o
+TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
 
-addtest : main.o addtest.o gtest_main.a
+$(TODIR)/%.o : $(TSDIR)/%.cpp $(IDIR)/add.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
+
+addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@

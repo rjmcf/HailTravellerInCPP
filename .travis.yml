@@ -1,2 +1,5 @@
 language: cpp
 
+before_script: make
+
+script: ./addtest
