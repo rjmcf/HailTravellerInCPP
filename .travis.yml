@@ -1,5 +1,8 @@
 language: cpp
 
+notifications:
+  email: false
+
 before_script:
  - ls 
  - mkdir gtestfiles
