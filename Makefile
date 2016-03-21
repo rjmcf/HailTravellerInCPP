@@ -17,12 +17,12 @@
 GTEST_DIR = googletest
 
 # Where to find user code.
-IDIR=src/header
-SDIR=src/impl
-ODIR=src/obj
-TSDIR=test/impl
-TODIR=test/obj
-GTDUMP=gtestfiles
+IDIR = src/header
+SDIR = src/impl
+ODIR = src/obj
+TSDIR = test/impl
+TODIR = test/obj
+GTDUMP = gtestfiles
 
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
@@ -34,7 +34,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = addtest
+TESTS = 
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -43,7 +43,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 # House-keeping build targets.
 
-all : $(TESTS)
+all : testAll
 
 clean :
 	rm -f $(TESTS) $(GTDUMP)/* $(ODIR)/* $(TODIR)/*
@@ -75,22 +75,22 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # function.
 
 # Add object file names here
-_OBJ = main.o
+_OBJ = location.o item.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 	
 # Add test object file names here
-_TEST = addtest.o
+_TEST = location_tests.o item_tests.o
 TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
 
 $(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 
-addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest.a
+testAll : $(OBJ) $(TEST) $(GTDUMP)/gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 	
 .PHONY : run_tests
-run_tests : addtest
-	./addtest
+run_tests : testAll
+	./testAll
