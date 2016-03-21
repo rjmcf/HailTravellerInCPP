@@ -14,7 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = googletest/googletest
+GTEST_DIR = googletest
 
 # Where to find user code.
 IDIR=src/header
@@ -74,14 +74,19 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-$(ODIR)/main.o : $(SDIR)/main.cpp $(GTEST_HEADERS)
+# Add object file names here
+_OBJ = main.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+$(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 	
-$(TODIR)/addtest.o : $(TSDIR)/addtest.cpp $(GTEST_HEADERS)
+# Add test object file names here
+_TEST = addtest.o
+TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
+
+$(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 
 addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
-	
-debug: 
-	@echo $(OBJ) 
