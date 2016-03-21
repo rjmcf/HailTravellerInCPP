@@ -74,18 +74,10 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-# Add object file names here
-_OBJ = main.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
-$(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)
+$(ODIR)/main.o : $(SDIR)/main.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 	
-# Add test object file names here
-_TEST = addtest.o
-TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
-
-$(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
+$(TODIR)/addtest.o : $(TSDIR)/addtest.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 
 addtest : $(OBJ) $(TEST) $(GTDUMP)/gtest.a
