@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "location.h"
 #include "item.h"
+#include "direction.h"
 
 TEST(LocationTests, constructorGetterTest)
 {
@@ -42,4 +43,17 @@ TEST(LocationTests, beLookedAtTest)
 
     delete i0;
     delete i1;
+}
+
+TEST(LocationTests, hasPathAndGetPathTest)
+{
+    Location l0("loc0ID", "l0 is beautiful");
+    Location l1("loc1ID", "l1 is beautiful");
+
+    EXPECT_FALSE(l0.hasPath(Direction::F));
+
+    l0.setForwards(&l1, "a beautiful l1");
+
+    EXPECT_TRUE(l0.hasPath(Direction::F));
+    EXPECT_EQ(l0.getPath(Direction::F), &l1);
 }

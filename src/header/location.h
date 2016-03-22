@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "item.h"
+#include "direction.h"
 
 using std::string;
 using std::vector;
@@ -32,7 +33,8 @@ class Location
 		void setLeft(Location *l, string lP) { left = l; lPath = lP; }
 		void setRight(Location *r, string rP) { right = r; rPath = rP; }
 		void setBackwards(Location *b, string bP) { backwards = b; bPath = bP; }
-
+		bool hasPath(DirectionT) const;
+		Location *getPath(DirectionT) const;
 };
 
 #endif // LOCATION_H_INCLUDED

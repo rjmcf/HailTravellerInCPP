@@ -1,6 +1,6 @@
 #include "item.h"
 
-string Item::beLookedAt()
+string Item::beLookedAt() const
 {
 	if (visible) return description;
 	else return "";

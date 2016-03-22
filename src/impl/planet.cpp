@@ -1,13 +1,14 @@
 #include <iostream>
 #include "planet.h"
+#include "direction.h"
 
-string Planet::DEBUGgetLocations()
+bool Planet::movePlayer(DirectionT d)
 {
-    string result = "";
-    for (unsigned int i = 0; i < locations.size(); i++)
+    if (current_location->hasPath(d))
     {
-        result += (locations.at(i))->getLocID() + "\n";
+        current_location = current_location->getPath(d);
+        return true;
     }
 
-    return result;
+    return false;
 }

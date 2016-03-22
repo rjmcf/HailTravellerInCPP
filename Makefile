@@ -76,7 +76,7 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # function.
 
 # Add object file names here
-_OBJ = item location planet
+_OBJ = item sign location planet
 OBJ = $(patsubst %,$(ODIR)/%.o,$(_OBJ))
 
 $(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)

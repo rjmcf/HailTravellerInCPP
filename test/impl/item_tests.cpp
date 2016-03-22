@@ -3,7 +3,7 @@
 
 using std::string;
 
-TEST(ItemTest, constructorGetterTest)
+TEST(ItemTests, constructorGetterTest)
 {
 	Item i0("i0 is beautiful", true);
 	Item i1("i1 is beautiful", false);
@@ -19,7 +19,7 @@ TEST(ItemTest, constructorGetterTest)
 	EXPECT_EQ(i1.beLookedAt(), "");
 }
 
-TEST(ItemTest, setVisibilityTest)
+TEST(ItemTests, setVisibilityTest)
 {
     Item i0("i0 is beautiful", false);
     string n0[] = {"i0"};
@@ -32,7 +32,7 @@ TEST(ItemTest, setVisibilityTest)
     EXPECT_EQ(i0.beLookedAt(), "i0 is beautiful");
 }
 
-TEST(ItemTest, hasNameTest)
+TEST(ItemTests, hasNameTest)
 {
     Item i0("i0 is beautiful", true);
     string n0[] = {"i0", "pretty thing"};

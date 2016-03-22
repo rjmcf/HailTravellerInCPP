@@ -3,6 +3,7 @@
 #include<vector>
 #include "location.h"
 #include "item.h"
+#include "direction.h"
 
 string Location::beLookedAt() const
 {
@@ -28,3 +29,24 @@ string Location::beLookedAt() const
 
     return result;
 }
+
+bool Location::hasPath(DirectionT d) const
+{
+    return getPath(d)!=0;
+}
+
+Location *Location::getPath(DirectionT d) const
+{
+    switch (d)
+    {
+    case Direction::F:
+        return forwards;
+    case Direction::L:
+        return left;
+    case Direction::R:
+        return right;
+    default:
+        return backwards;
+    }
+}
+

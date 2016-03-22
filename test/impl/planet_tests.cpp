@@ -1,22 +1,54 @@
 #include "gtest/gtest.h"
 #include "planet.h"
 
-TEST(PlanetTest, constructorGetterTest)
+class PlanetTest : public testing::Test
 {
-    Planet p0("P0");
+    protected:
+        virtual void SetUp()
+        {
+            p0 = new Planet("P0");
+            l0 = new Location("l0", "Dl0");
+            l1 = new Location("l1", "Dl1");
 
-    EXPECT_EQ(p0.getName(), "P0");
+            l0->setForwards(l1, "PDl1");
+
+            p0->addLocation(l0);
+            p0->addLocation(l1);
+
+            p0->setCurrentLocation(0);
+        }
+
+        virtual void TearDown()
+        {
+            delete p0;
+            delete l0;
+            delete l1;
+        }
+
+        Planet *p0;
+        Location *l0, *l1;
+};
+
+TEST_F(PlanetTest, constructorGetterTest)
+{
+    EXPECT_EQ(p0->getName(), "P0");
 }
 
-TEST(PlanetTest, locationVectorTest)
+TEST_F(PlanetTest, locationVectorTest)
 {
-    Planet p0("P0");
+    EXPECT_EQ((p0->getLocationNum(0))->getLocID(), "l0");
+    EXPECT_EQ((p0->getLocationNum(1))->getLocID(), "l1");
+}
 
-    Location *l0 = new Location("l0", "Dl0");
-    Location *l1 = new Location("l1", "Dl1");
+TEST_F(PlanetTest, currentLocationTest)
+{
+    EXPECT_EQ(p0->getLocationNum(0), p0->getCurrentLocation());
+}
 
-    p0.addLocation(l0);
-    p0.addLocation(l1);
-
-    EXPECT_EQ(p0.DEBUGgetLocations(), "l0\nl1\n");
+TEST_F(PlanetTest, movePlayerTest)
+{
+    EXPECT_FALSE(p0->movePlayer(Direction::B));
+    EXPECT_EQ(p0->getLocationNum(0), p0->getCurrentLocation());
+    EXPECT_TRUE(p0->movePlayer(Direction::F));
+    EXPECT_EQ(p0->getLocationNum(1), p0->getCurrentLocation());
 }
