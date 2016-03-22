@@ -75,14 +75,14 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # function.
 
 # Add object file names here
-_OBJ = location.o item.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+_OBJ = item location planet
+OBJ = $(patsubst %,$(ODIR)/%.o,$(_OBJ))
 
 $(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< -I$(IDIR)
 	
 # Add test object file names here
-_TEST = location_tests.o item_tests.o
+_TEST = $(patsubst %,%_tests.o,$(_OBJ))
 TEST = $(patsubst %,$(TODIR)/%,$(_TEST))
 
 $(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
