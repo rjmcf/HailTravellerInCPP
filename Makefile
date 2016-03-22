@@ -45,8 +45,9 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 all : testAll
 
+.PHONY : clean
 clean :
-	rm -f $(TESTS) $(GTDUMP)/* $(ODIR)/* $(TODIR)/*
+	rm -f testAll $(TESTS) $(GTDUMP)/* $(ODIR)/* $(TODIR)/*
 
 # Builds gtest.a and gtest_main.a.
 
@@ -94,3 +95,4 @@ testAll : $(OBJ) $(TEST) $(GTDUMP)/gtest_main.a
 .PHONY : run_tests
 run_tests : testAll
 	./testAll
+	$(MAKE) clean
