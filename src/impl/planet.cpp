@@ -4,9 +4,9 @@
 string Planet::DEBUGgetLocations()
 {
     string result = "";
-    for (Location* l : locations)
+    for (unsigned int i = 0; i < locations.size(); i++)
     {
-        result += l->getLocID() + "\n";
+        result += (locations.at(i))->getLocID() + "\n";
     }
 
     return result;

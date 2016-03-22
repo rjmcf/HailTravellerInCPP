@@ -7,11 +7,11 @@
 string Location::beLookedAt() const
 {
     string result = description + "\n";
-    for (Item *i : items)
+    for (unsigned int i = 0; i < items.size() ; i++)
     {
-        if (i->isVisible())
+        if ((items.at(i))->isVisible())
         {
-            result += i->beLookedAt() + "\n";
+            result += (items.at(i))->beLookedAt() + "\n";
         }
     }
     if (forwards == 0) result += "There is no path in front of you\n";
