@@ -1,0 +1,6 @@
+#ifndef CORE_H_INCLUDED
+#define CORE_H_INCLUDED
+
+
+
+#endif // CORE_H_INCLUDED

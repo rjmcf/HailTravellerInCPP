@@ -19,17 +19,17 @@ TEST(LocationTests, beLookedAtTest)
     Location l3("loc3ID", "l3 is beautiful");
     Location l4("loc0ID", "l4 is beautiful");
 
-    Item *i0 = new Item("i0 is beautiful", true);
-    Item *i1 = new Item("i1 is beautiful", false);
+    Item *i0 = new Item(true, "There is i0", "i0 is beautiful");
+    Item *i1 = new Item(false, "There is i1", "i1 is beautiful");
 
     l0.addItem(i0);
     l0.addItem(i1);
 
-    EXPECT_EQ(l0.beLookedAt(), "l0 is beautiful\ni0 is beautiful\nThere is no path in front of you\nThere is no path to your left\nThere is no path to your right\nThere is no path behind you\n");
+    EXPECT_EQ(l0.beLookedAt(), "l0 is beautiful\nThere is i0\nThere is no path in front of you.\nThere is no path to your left.\nThere is no path to your right.\nThere is no path behind you.\n");
 
     i1->setVisibleTo(true);
 
-    EXPECT_EQ(l0.beLookedAt(), "l0 is beautiful\ni0 is beautiful\ni1 is beautiful\nThere is no path in front of you\nThere is no path to your left\nThere is no path to your right\nThere is no path behind you\n");
+    EXPECT_EQ(l0.beLookedAt(), "l0 is beautiful\nThere is i0\nThere is i1\nThere is no path in front of you.\nThere is no path to your left.\nThere is no path to your right.\nThere is no path behind you.\n");
 
     i0->setVisibleTo(false);
     i1->setVisibleTo(false);

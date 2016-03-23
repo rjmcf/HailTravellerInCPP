@@ -12,19 +12,19 @@ string Location::beLookedAt() const
     {
         if ((items.at(i))->isVisible())
         {
-            result += (items.at(i))->beLookedAt() + "\n";
+            result += (items.at(i))->getDescription() + "\n";
         }
     }
-    if (forwards == 0) result += "There is no path in front of you\n";
+    if (forwards == 0) result += "There is no path in front of you.\n";
     else result += "In front of you there is " + fPath + "\n";
 
-    if (left == 0) result += "There is no path to your left\n";
+    if (left == 0) result += "There is no path to your left.\n";
     else result += "To your left there is " + lPath + "\n";
 
-    if (right == 0) result += "There is no path to your right\n";
+    if (right == 0) result += "There is no path to your right.\n";
     else result += "To your right there is " + rPath + "\n";
 
-    if (backwards == 0) result += "There is no path behind you\n";
+    if (backwards == 0) result += "There is no path behind you.\n";
     else result += "Behind you there is " + bPath + "\n";
 
     return result;

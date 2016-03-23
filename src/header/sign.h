@@ -11,7 +11,7 @@ class Sign : public Item
     private:
         string text;
     public:
-        Sign(string d, bool is_v, string t) : Item(d, is_v), text(t) { string names[] = {"sign"}; setNames(names, 1); }
+        Sign(bool is_v, string d, string t) : Item(is_v, d, "You can just about read the words on the sign."), text(t) { string names[] = {"sign"}; setNames(names, 1); }
         ~Sign() { }
         string read() { return text; }
 };
