@@ -10,7 +10,7 @@
 class CitPlanet : public Planet
 {
     private:
-        Location *game_begin, *second_sign, *ship_hidden, *citadel_loc, *landing_location;
+        Location *game_begin, *second_sign, *ship_hidden;
         Item *houses, *cit, *ship_item;
         Sign *sign1, *sign2;
 

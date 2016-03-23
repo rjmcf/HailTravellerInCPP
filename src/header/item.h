@@ -1,6 +1,7 @@
 #ifndef ITEM_H_INCLUDED
 #define ITEM_H_INCLUDED
 
+#include <iostream>
 #include<string>
 #include<set>
 
@@ -18,7 +19,7 @@ class Item
 		Item(bool is_v, string d, string ld) : visible(is_v), description(d), look_description(ld) { }
 		~Item() { }
 		/* necessary for object consistency */
-		void setNames(string [], int);
+		void addName(string n) { names.insert(n); }
 		bool isVisible() const { return visible; }
 		bool hasName(string n) const { return names.find(n) != names.end(); }
 		void setVisibleTo(bool v) { visible = v; }

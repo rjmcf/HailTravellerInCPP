@@ -7,11 +7,8 @@ TEST(ItemTests, constructorGetterTest)
 {
 	Item i0(true, "There is i0", "i0 is beautiful");
 	Item i1(false, "There is i1", "i1 is beautiful");
-	string n0[] = {"i0"};
-	string n1[] = {"i1"};
-
-	i0.setNames(n0,1);
-	i1.setNames(n1,1);
+	i0.addName("i0");
+	i1.addName("i1");
 
 	EXPECT_TRUE(i0.isVisible());
 	EXPECT_FALSE(i1.isVisible());
@@ -24,8 +21,7 @@ TEST(ItemTests, constructorGetterTest)
 TEST(ItemTests, setVisibilityTest)
 {
     Item i0(false, "There is i0", "i0 is beautiful");
-    string n0[] = {"i0"};
-    i0.setNames(n0, 1);
+    i0.addName("i0");
 
     EXPECT_EQ(i0.getDescription(), "");
 
@@ -37,8 +33,8 @@ TEST(ItemTests, setVisibilityTest)
 TEST(ItemTests, hasNameTest)
 {
     Item i0(true, "There is i0", "i0 is beautiful");
-    string n0[] = {"i0", "pretty thing"};
-    i0.setNames(n0, 2);
+    i0.addName("i0");
+    i0.addName("pretty thing");
 
     EXPECT_TRUE(i0.hasName("i0"));
     EXPECT_TRUE(i0.hasName("pretty thing"));

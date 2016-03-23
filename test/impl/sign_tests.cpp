@@ -3,13 +3,7 @@
 
 TEST(SignTests, itemInheritests)
 {
-    Sign s0(false, "A sign s0", "This text is so cool!");
-
-    EXPECT_EQ(s0.getDescription(), "");
-
-    EXPECT_EQ(s0.beLookedAt(), "You can just about read the words on the sign.");
-
-    s0.setVisibleTo(true);
+    Sign s0("A sign s0", "This text is so cool!");
 
     EXPECT_EQ(s0.getDescription(), "A sign s0");
 
@@ -18,7 +12,7 @@ TEST(SignTests, itemInheritests)
 
 TEST(SignTests, readTest)
 {
-    Sign s0(false, "A sign s0","This text is so cool!");
+    Sign s0("A sign s0","This text is so cool!");
 
     EXPECT_EQ(s0.read(), "This text is so cool!");
 }
