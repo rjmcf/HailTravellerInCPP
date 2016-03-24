@@ -23,18 +23,18 @@ class Location
 		string rPath;
 		Location *backwards;
 		string bPath;
+		Location **directionToLocation(DirectionT);
+		string *directionToPathD(DirectionT);
 	public:
 		Location(string lID, string d) : loc_id(lID), description(d), items(0), forwards(0), left(0), right(0), backwards(0) { }
 		~Location() { }
 		const string getLocID() const { return loc_id; }
 		string beLookedAt() const;
 		void addItem(Item * const i) { items.push_back(i); }
-		void setForwards(Location *f, string fP) { forwards = f; fPath = fP; }
-		void setLeft(Location *l, string lP) { left = l; lPath = lP; }
-		void setRight(Location *r, string rP) { right = r; rPath = rP; }
-		void setBackwards(Location *b, string bP) { backwards = b; bPath = bP; }
-		bool hasPath(DirectionT) const;
 		Location *getPath(DirectionT) const;
+		void setPath(DirectionT, Location *, string);
+		void removePath(DirectionT);
+		bool hasPath(DirectionT);
 };
 
 #endif // LOCATION_H_INCLUDED

@@ -5,7 +5,6 @@
 #include "location.h"
 #include "item.h"
 #include "sign.h"
-#include "direction.h"
 
 class CitPlanet : public Planet
 {
@@ -17,7 +16,6 @@ class CitPlanet : public Planet
     public:
         CitPlanet(string);
         ~CitPlanet();
-        //bool movePlayer(DirectionT);
 };
 
 

@@ -1,7 +1,6 @@
 #ifndef SIGN_H_INCLUDED
 #define SIGN_H_INCLUDED
 
-#include <iostream>
 #include <string>
 #include "item.h"
 

@@ -1,9 +1,8 @@
 #ifndef ITEM_H_INCLUDED
 #define ITEM_H_INCLUDED
 
-#include <iostream>
-#include<string>
-#include<set>
+#include <string>
+#include <set>
 
 using std::string;
 using std::set;

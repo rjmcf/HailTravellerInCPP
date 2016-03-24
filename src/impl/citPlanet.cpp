@@ -1,7 +1,6 @@
-#include <iostream>
 #include "citPlanet.h"
 
-CitPlanet::CitPlanet(string name) : Planet(name)
+CitPlanet::CitPlanet(string name) : Planet(name, Direction::F, "the spaceship, lying as you first found it.")
 {
     game_begin = new Location("00", "You are surrounded by tumble-down houses. You assume a village might once have stood here.");
     houses = new Item(true, "Rows of houses spilling their guts on to the road surround you.", "The houses look like they have been destroyed by a large explosion. You wonder who lived there, and how they must have died.");
@@ -23,11 +22,11 @@ CitPlanet::CitPlanet(string name) : Planet(name)
     addLocation(game_begin);
     addLocation(second_sign);
     addLocation(ship_hidden);
-    setCurrentLocation(0);
+    setLandingLocation(2);
 
-    game_begin->setLeft(second_sign, "a path leading deeper in to the village between the houses.");
-    second_sign->setRight(game_begin, "a path that will take you back to where you woke up.");
-    ship_hidden->setLeft(game_begin, "the path through the trees leading back to the village.");
+    game_begin->setPath(Direction::L, second_sign, "a path leading deeper in to the village between the houses.");
+    second_sign->setPath(Direction::R, game_begin, "a path that will take you back to where you woke up.");
+    ship_hidden->setPath(Direction::L, game_begin, "the path through the trees leading back to the village.");
 }
 
 CitPlanet::~CitPlanet()

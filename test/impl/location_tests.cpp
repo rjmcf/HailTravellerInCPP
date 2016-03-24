@@ -1,8 +1,6 @@
 #include<iostream>
 #include "gtest/gtest.h"
 #include "location.h"
-#include "item.h"
-#include "direction.h"
 
 TEST(LocationTests, constructorGetterTest)
 {
@@ -34,10 +32,10 @@ TEST(LocationTests, beLookedAtTest)
     i0->setVisibleTo(false);
     i1->setVisibleTo(false);
 
-    l0.setForwards(&l1, "a beautiful l1");
-    l0.setLeft(&l2, "a beautiful l2");
-    l0.setRight(&l3, "a beautiful l3");
-    l0.setBackwards(&l4, "a beautiful l4");
+    l0.setPath(Direction::F, &l1, "a beautiful l1");
+    l0.setPath(Direction::L, &l2, "a beautiful l2");
+    l0.setPath(Direction::R, &l3, "a beautiful l3");
+    l0.setPath(Direction::B, &l4, "a beautiful l4");
 
     EXPECT_EQ(l0.beLookedAt(), "l0 is beautiful\nIn front of you there is a beautiful l1\nTo your left there is a beautiful l2\nTo your right there is a beautiful l3\nBehind you there is a beautiful l4\n");
 
@@ -45,15 +43,30 @@ TEST(LocationTests, beLookedAtTest)
     delete i1;
 }
 
-TEST(LocationTests, hasPathAndGetPathTest)
+TEST(LocationTests, hasPathAndSetPathTest)
 {
     Location l0("loc0ID", "l0 is beautiful");
     Location l1("loc1ID", "l1 is beautiful");
 
     EXPECT_FALSE(l0.hasPath(Direction::F));
 
-    l0.setForwards(&l1, "a beautiful l1");
+    l0.setPath(Direction::F, &l1, "a beautiful l1");
+
+    ASSERT_TRUE(l0.hasPath(Direction::F));
+    EXPECT_EQ(l0.getPath(Direction::F), &l1);
+}
+
+TEST(LocationTests, removePathTests)
+{
+    Location l0("loc0ID", "l0 is beautiful");
+    Location l1("loc1ID", "l1 is beautiful");
+
+    l0.setPath(Direction::F, &l1, "a beautiful l1");
 
     EXPECT_TRUE(l0.hasPath(Direction::F));
-    EXPECT_EQ(l0.getPath(Direction::F), &l1);
+
+    l0.removePath(Direction::F);
+
+    EXPECT_FALSE(l0.hasPath(Direction::F));
+
 }
