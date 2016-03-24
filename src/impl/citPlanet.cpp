@@ -5,13 +5,13 @@ CitPlanet::CitPlanet(string name) : Planet(name, Direction::F, "the spaceship, l
     game_begin = new Location("00", "You are surrounded by tumble-down houses. You assume a village might once have stood here.");
     houses = new Item(true, "Rows of houses spilling their guts on to the road surround you.", "The houses look like they have been destroyed by a large explosion. You wonder who lived there, and how they must have died.");
     houses->addName("houses"); houses->addName("house"); houses->addName("buildings");
-    sign1 = new Sign("A wooden sign is sticking upright in the dusty ground.", "This is the text on the first sign.");
+    sign1 = new Sign("A wooden sign is sticking upright in the dusty ground.", "src/signs/citPlanet/sign1.txt");
     game_begin->addItem(houses); game_begin->addItem(sign1);
 
     second_sign = new Location("01", "In front of you is a giant building, towers and flying buttresses everywhere. The door is barred.");
     cit = new Item(true, "There is a large building that looks like it might be a citadel of some sort.", "The imposing building looks like it would be difficult to attack and easy to defend. You wouldn't mind living inside it during a seige.");
     cit->addName("citadel"); cit->addName("building");
-    sign2 = new Sign("A sign is hanging from the door of the citadel.", "This is the text on the second sign");
+    sign2 = new Sign("A sign is hanging from the door of the citadel.", "src/signs/citPlanet/sign2.txt");
     second_sign->addItem(cit); second_sign->addItem(sign2);
 
     ship_hidden = new Location("02", "You are standing in front of a spaceship.");

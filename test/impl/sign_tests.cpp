@@ -3,7 +3,7 @@
 
 TEST(SignTests, itemInheritests)
 {
-    Sign s0("A sign s0", "This text is so cool!");
+    Sign s0("A sign s0", "test/signTest.txt");
 
     EXPECT_EQ(s0.getDescription(), "A sign s0");
 
@@ -12,8 +12,8 @@ TEST(SignTests, itemInheritests)
 
 TEST(SignTests, readTest)
 {
-    Sign s0("A sign s0","This text is so cool!");
+    Sign s0("A sign s0","test/signTest.txt");
 
-    EXPECT_EQ(s0.read(), "This text is so cool!");
+    EXPECT_EQ(s0.read(), "This is a test.\nThis tests line breaks.\n");
 }
 
