@@ -97,7 +97,7 @@ TEST(LocationTests, getSignTest)
 
     l0.addItem(&i0); l0.addItem(&i1);
 
-    EXPECT_EQ(l0.getSign(), nullptr);
+    EXPECT_TRUE(l0.getSign() == 0);
 
     l0.addItem(&s0);
 

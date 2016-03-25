@@ -27,7 +27,7 @@ class Location
 		Location **directionToLocation(DirectionT);
 		string *directionToPathD(DirectionT);
 	public:
-		Location(string lID, string d) : loc_id(lID), description(d), forwards(nullptr), left(nullptr), right(nullptr), backwards(nullptr) { }
+		Location(string lID, string d) : loc_id(lID), description(d), forwards(0), left(0), right(0), backwards(0) { }
 		~Location() { }
 		const string getLocID() const { return loc_id; }
 		string beLookedAt() const;
