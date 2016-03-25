@@ -16,6 +16,7 @@ class CitPlanet : public Planet
     public:
         CitPlanet(string);
         ~CitPlanet();
+        Location *getStartingLocation() { return game_begin; }
 };
 
 

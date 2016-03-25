@@ -76,7 +76,7 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # function.
 
 # Add object file names here
-_OBJ = item sign location player planet ship citPlanet firePlanet
+_OBJ = item sign location player planet ship citPlanet firePlanet executer
 OBJ = $(patsubst %,$(ODIR)/%.o,$(_OBJ))
 
 $(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)
@@ -92,7 +92,14 @@ $(TODIR)/%.o : $(TSDIR)/%.cpp $(GTEST_HEADERS)
 testAll : $(OBJ) $(TEST) $(GTDUMP)/gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 	
+HT : $(OBJ)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+	
 .PHONY : run_tests
 run_tests : testAll
 	./testAll
 	$(MAKE) clean
+	
+.PHONY : play
+play : HT
+	./HT

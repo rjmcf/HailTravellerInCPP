@@ -1,6 +1,7 @@
 #include<iostream>
 #include "gtest/gtest.h"
 #include "location.h"
+#include "sign.h"
 
 TEST(LocationTests, constructorGetterTest)
 {
@@ -17,8 +18,8 @@ TEST(LocationTests, beLookedAtTest)
     Location l3("loc3ID", "l3 is beautiful");
     Location l4("loc0ID", "l4 is beautiful");
 
-    Item *i0 = new Item(true, "There is i0", "i0 is beautiful");
-    Item *i1 = new Item(false, "There is i1", "i1 is beautiful");
+    Item *i0 = new Item(true, false, "There is i0", "i0 is beautiful");
+    Item *i1 = new Item(false, false, "There is i1", "i1 is beautiful");
 
     l0.addItem(i0);
     l0.addItem(i1);
@@ -69,4 +70,36 @@ TEST(LocationTests, removePathTests)
 
     EXPECT_FALSE(l0.hasPath(Direction::F));
 
+}
+
+TEST(LocationTests, hasSignTest)
+{
+    Location l0("loc0ID", "l0 is beautiful");
+    Item i0(true, false, "There is i0", "i0 is beautiful");
+    Item i1(true, false, "There is i1", "i1 is beautiful");
+    Sign s0("sign s0", "test/signTest.txt");
+
+    l0.addItem(&i0); l0.addItem(&i1);
+
+    EXPECT_FALSE(l0.hasSign());
+
+    l0.addItem(&s0);
+
+    EXPECT_TRUE(l0.hasSign());
+}
+
+TEST(LocationTests, getSignTest)
+{
+    Location l0("loc0ID", "l0 is beautiful");
+    Item i0(true, false, "There is i0", "i0 is beautiful");
+    Item i1(true, false, "There is i1", "i1 is beautiful");
+    Sign s0("sign s0", "test/signTest.txt");
+
+    l0.addItem(&i0); l0.addItem(&i1);
+
+    EXPECT_EQ(l0.getSign(), nullptr);
+
+    l0.addItem(&s0);
+
+    EXPECT_EQ(l0.getSign()->getDescription(), "sign s0");
 }

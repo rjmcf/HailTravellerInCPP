@@ -11,16 +11,16 @@ string Location::beLookedAt() const
             result += (items.at(i))->getDescription() + "\n";
         }
     }
-    if (forwards == 0 && loc_id != "50") result += "There is no path in front of you.\n";
+    if (forwards == nullptr && loc_id != "50") result += "There is no path in front of you.\n";
     else if(loc_id != "50") result += "In front of you there is " + fPath + "\n";
 
-    if (left == 0 && loc_id != "50") result += "There is no path to your left.\n";
+    if (left == nullptr && loc_id != "50") result += "There is no path to your left.\n";
     else if(loc_id != "50") result += "To your left there is " + lPath + "\n";
 
-    if (right == 0 && loc_id != "50") result += "There is no path to your right.\n";
+    if (right == nullptr && loc_id != "50") result += "There is no path to your right.\n";
     else if(loc_id != "50") result += "To your right there is " + rPath + "\n";
 
-    if (backwards == 0) result += "There is no path behind you.\n";
+    if (backwards == nullptr) result += "There is no path behind you.\n";
     else result += "Behind you there is " + bPath + "\n";
 
     return result;
@@ -28,7 +28,7 @@ string Location::beLookedAt() const
 
 bool Location::hasPath(DirectionT d)
 {
-    return *(directionToLocation(d))!=0;
+    return *(directionToLocation(d))!=nullptr;
 }
 
 Location *Location::getPath(DirectionT d) const
@@ -88,5 +88,23 @@ void Location::removePath(DirectionT d)
 {
     Location **toRemove = directionToLocation(d);
     *toRemove = 0;
+}
+
+bool Location::hasSign() const
+{
+    for (unsigned int i = 0; i < items.size(); i++)
+    {
+        if (items.at(i)->isSign()) return true;
+    }
+    return false;
+}
+
+Sign *Location::getSign() const
+{
+    for (unsigned int i = 0; i < items.size(); i++)
+    {
+        if (items.at(i)->isSign()) return static_cast<Sign*>(items.at(i));
+    }
+    return nullptr;
 }
 

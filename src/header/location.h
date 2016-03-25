@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "item.h"
+#include "sign.h"
 #include "direction.h"
 
 using std::string;
@@ -26,7 +27,7 @@ class Location
 		Location **directionToLocation(DirectionT);
 		string *directionToPathD(DirectionT);
 	public:
-		Location(string lID, string d) : loc_id(lID), description(d), items(0), forwards(0), left(0), right(0), backwards(0) { }
+		Location(string lID, string d) : loc_id(lID), description(d), forwards(nullptr), left(nullptr), right(nullptr), backwards(nullptr) { }
 		~Location() { }
 		const string getLocID() const { return loc_id; }
 		string beLookedAt() const;
@@ -35,6 +36,8 @@ class Location
 		void setPath(DirectionT, Location *, string);
 		void removePath(DirectionT);
 		bool hasPath(DirectionT);
+		bool hasSign() const;
+		Sign* getSign() const;
 };
 
 #endif // LOCATION_H_INCLUDED

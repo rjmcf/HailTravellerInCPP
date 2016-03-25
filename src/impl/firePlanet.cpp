@@ -3,39 +3,39 @@
 FirePlanet::FirePlanet(string name) : Planet(name, Direction::B, "the spaceship, looking invitingly cool compared to the temperature out here.")
 {
     crater = new Location("10", "The spaceship sits behind you, hanging on the edge of a large crater, which glows mysteriously due to the magma inside.");
-    ship_item = new Item(true, "The spaceship is still there, thank goodness.", "The plating on the bottom looks a little blackened after the descent through the hot atmosphere.");
+    ship_item = new Item(true, false, "The spaceship is still there, thank goodness.", "The plating on the bottom looks a little blackened after the descent through the hot atmosphere.");
     ship_item->addName("ship"); ship_item->addName("spaceship"); ship_item->addName("spacecraft");
-    crater_item = new Item(true, "The crater behind the spaceship glows ominously.", "It looks pretty deep. The bottom, far below you, has what looks like a lava spring filling it. You wish you'd spotted a better patch of ground to land on, but this was the closest place to the evidence of life you spotted from the air. It'll do for now.");
+    crater_item = new Item(true, false, "The crater behind the spaceship glows ominously.", "It looks pretty deep. The bottom, far below you, has what looks like a lava spring filling it. You wish you'd spotted a better patch of ground to land on, but this was the closest place to the evidence of life you spotted from the air. It'll do for now.");
     crater_item->addName("crater");
     sign1 = new Sign("A metal board attached to a section of small girder protrudes from the ground. You guess that this is the Paxak version of signs.", "Sign1 text");
     crater->addItem(ship_item); crater->addItem(crater_item); crater->addItem(sign1);
 
     volcano_base = new Location("11", "You look up at the peak of the smoking volcano to your left. You decide not to risk your life venturing up.");
-    volcano = new Item(true, "The volcano stands there like a lightly sleeping giant.", "You reason that going to the top would be a pretty quick way to end your life.");
+    volcano = new Item(true, false, "The volcano stands there like a lightly sleeping giant.", "You reason that going to the top would be a pretty quick way to end your life.");
     volcano->addName("mountain"); volcano->addName("volcano");
     sign2 = new Sign("Facing away from the volcano is a second sign, almost red hot from the heated ground.", "Sign2 text");
     volcano_base->addItem(volcano); volcano_base->addItem(sign2);
 
     mine = new Location("12", "In front of you is a dark entrance cut into the side of a mountain. Judging by the pickaxe like tools lying nearby, this may have been a mine.");
-    mine_item = new Item(true, "The forbidding entrance makes you feel uneasy", "The more you look into the hole, the more you get the feeling something might be looking back.");
+    mine_item = new Item(true, false, "The forbidding entrance makes you feel uneasy", "The more you look into the hole, the more you get the feeling something might be looking back.");
     mine_item->addName("mine"); mine_item->addName("entrance");
     sign3 = new Sign("Another sign is propped up against the entrance.", "Sign3 text");
     mine->addItem(mine_item); mine->addItem(sign3);
 
     village = new Location("13", "You are surrounded by tumbledown houses, broken and split. Debris is strewn from the doorways, as if they were hurriedly deserted.");
-    buildings = new Item(true, "The houses appear to be glittering slightly in the light of the everpresent lava.", "The houses appear to have been made from a glass like substance, now shattered. It's terrible, but it's also beautiful.");
+    buildings = new Item(true, false, "The houses appear to be glittering slightly in the light of the everpresent lava.", "The houses appear to have been made from a glass like substance, now shattered. It's terrible, but it's also beautiful.");
     buildings->addName("buildings"); buildings->addName("houses");
     sign4 = new Sign("Just outside the village is another sign, telling more of the story.", "Sign4 text");
     village->addItem(buildings); village->addItem(sign4);
 
     lava_pool = new Location("14", "You go as close to the lava pool as you dare. It is hot.");
-    pool = new Item(true, "The pool of lava is constantly in motion, as if being stirred from within.", "The heat of the molten rock is making bubbles in the liquid, and whenever they burst you have to be careful not to get burned.");
+    pool = new Item(true, false, "The pool of lava is constantly in motion, as if being stirred from within.", "The heat of the molten rock is making bubbles in the liquid, and whenever they burst you have to be careful not to get burned.");
     pool->addName("pool"); pool->addName("lava");
     sign5 = new Sign("In danger of being consumed by the spitting lava is another sign.", "Sign5 text");
     lava_pool->addItem(pool); lava_pool->addItem(sign5);
 
     workshop = new Location("15", "The building is the least damaged of all the ones you have seen here, but then it's not made of the same material as the others.");
-    forge = new Item(true, "The small building looks solid and heavily fireproofed, and as if it has had to be rebuilt multiple times.", "The substance the building is made of reminds you of the hardened black rocks you have seen floating within the lava. Inside the building you see a furnace, an anvil, and an iron bucket filled with tools of a blacksmith. This must be the workshop of Paxak.");
+    forge = new Item(true, false, "The small building looks solid and heavily fireproofed, and as if it has had to be rebuilt multiple times.", "The substance the building is made of reminds you of the hardened black rocks you have seen floating within the lava. Inside the building you see a furnace, an anvil, and an iron bucket filled with tools of a blacksmith. This must be the workshop of Paxak.");
     forge->addName("forge"); forge->addName("workshop"); forge->addName("building");
     sign6 = new Sign("Stuck on the door is the sign that completes the story.", "Sign6 text");
     workshop->addItem(forge); workshop->addItem(sign6);

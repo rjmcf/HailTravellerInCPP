@@ -5,8 +5,8 @@ using std::string;
 
 TEST(ItemTests, constructorGetterTest)
 {
-	Item i0(true, "There is i0", "i0 is beautiful");
-	Item i1(false, "There is i1", "i1 is beautiful");
+	Item i0(true, false, "There is i0", "i0 is beautiful");
+	Item i1(false, false, "There is i1", "i1 is beautiful");
 	i0.addName("i0");
 	i1.addName("i1");
 
@@ -16,11 +16,12 @@ TEST(ItemTests, constructorGetterTest)
 	EXPECT_EQ(i1.getDescription(), "");
 	EXPECT_EQ(i0.beLookedAt(), "i0 is beautiful");
 	EXPECT_EQ(i1.beLookedAt(), "i1 is beautiful");
+	EXPECT_FALSE(i0.isSign());
 }
 
 TEST(ItemTests, setVisibilityTest)
 {
-    Item i0(false, "There is i0", "i0 is beautiful");
+    Item i0(false, false, "There is i0", "i0 is beautiful");
     i0.addName("i0");
 
     EXPECT_EQ(i0.getDescription(), "");
@@ -32,7 +33,7 @@ TEST(ItemTests, setVisibilityTest)
 
 TEST(ItemTests, hasNameTest)
 {
-    Item i0(true, "There is i0", "i0 is beautiful");
+    Item i0(true, false, "There is i0", "i0 is beautiful");
     i0.addName("i0");
     i0.addName("pretty thing");
 

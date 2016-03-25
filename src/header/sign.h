@@ -11,7 +11,7 @@ class Sign : public Item
     private:
         string text;
     public:
-        Sign(string d, string t) : Item(true, d, "You can just about read the words on the sign."), text(t) { addName("sign"); }
+        Sign(string d, string t) : Item(true, true, d, "You can just about read the words on the sign."), text(t) { addName("sign"); }
         ~Sign() { }
         string read() { return text; }
 };

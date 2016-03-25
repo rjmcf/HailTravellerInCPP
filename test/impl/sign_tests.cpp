@@ -8,6 +8,7 @@ TEST(SignTests, itemInheritests)
     EXPECT_EQ(s0.getDescription(), "A sign s0");
 
     EXPECT_TRUE(s0.hasName("sign"));
+    EXPECT_TRUE(s0.isSign());
 }
 
 TEST(SignTests, readTest)
