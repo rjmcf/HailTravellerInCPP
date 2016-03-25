@@ -8,7 +8,7 @@ Sign::Sign(string d, string f) : Item(true, d, "You can just about read the word
     string temp;
     string line;
 
-    std::ifstream file(f);
+    std::ifstream file(f.c_str());
     if (file.is_open())
     {
         while (std::getline(file, line))
