@@ -31,7 +31,7 @@ string Executer::executeCommand(string command)
     }
     else
     {
-        return "You can't do that!\n";
+        return raiseError();
     }
 }
 

@@ -76,7 +76,7 @@ $(GTDUMP)/gtest_main.a : $(GTDUMP)/gtest-all.o $(GTDUMP)/gtest_main.o
 # function.
 
 # Add object file names here
-_OBJ = item sign location player planet ship citPlanet firePlanet executer
+_OBJ = parser item sign location player planet ship citPlanet firePlanet executer core
 OBJ = $(patsubst %,$(ODIR)/%.o,$(_OBJ))
 
 $(ODIR)/%.o : $(SDIR)/%.cpp $(GTEST_HEADERS)

@@ -1,7 +1,6 @@
 #ifndef EXECUTER_H_INCLUDED
 #define EXECUTER_H_INCLUDED
 
-#include <iostream>
 #include "player.h"
 #include "ship.h"
 #include "citPlanet.h"
@@ -17,12 +16,12 @@ class Executer
         FirePlanet *fireP;
         string doRead();
         string doLook();
+        string raiseError() { return "You can't do that!"; }
     public:
         Executer();
         ~Executer();
         Player *getPlayer() { return player; }
         Ship *getShip() { return ship; }
-        void printString(string s) { std::cout << s << std::endl; }
         string executeCommand(string);
 };
 
